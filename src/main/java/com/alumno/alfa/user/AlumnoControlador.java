@@ -39,6 +39,10 @@ public class AlumnoControlador {
         alumnoActual.setNombre(alumno.getNombre());
         alumnoActual.setApellido(alumno.getApellido());
         alumnoActual.setEdad(alumno.getEdad());
+        alumnoActual.setEmail(alumno.getEmail());
+        alumnoActual.setTelefono(alumno.getTelefono());
+        alumnoActual.setSexo(alumno.getSexo());
+        
         return repositorio.save(alumnoActual);
     }
 

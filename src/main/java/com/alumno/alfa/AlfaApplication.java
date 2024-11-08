@@ -1,6 +1,7 @@
 package com.alumno.alfa;
 
 //netstat -ano | findstr :8080
+//taskkill /PID  <PID> /F
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
