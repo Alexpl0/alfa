@@ -1,5 +1,4 @@
-package com.alumno.alfa.user;
-
+package com.alumno.alfa.cursos;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,50 +14,48 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/alumno")
+@RequestMapping("/curso")
 @CrossOrigin(origins = "*")
-public class AlumnoControlador {
+public class CursosControlador {
     @Autowired
-    private AlumnoRepositorio repositorio;
+    private CursosRepositorio repositorio;
     
     @GetMapping
-    public List<Alumno> getAlumnos(){
+    public List<curso> getCursos(){
         return repositorio.findAll();
     }
 
     //
     @GetMapping("/{id}")
-    public Alumno getAlumnoById(@PathVariable Long id){
+    public curso getcursoById(@PathVariable Long id){
         return repositorio.findById(id).get();
     }
 
     @PostMapping
-    public Alumno createAlumno(@RequestBody Alumno alumno){
-        return repositorio.save(alumno);
+    public curso createCurso(@RequestBody curso curso){
+        return repositorio.save(curso);
     }
     
     @PutMapping("/{id}")
-    public Alumno updateAlumno(@PathVariable Long id, @RequestBody Alumno alumno){
-        Alumno alumnoActual = repositorio.findById(id).get();
-        alumnoActual.setNombre(alumno.getNombre());
-        alumnoActual.setApellido(alumno.getApellido());
-        alumnoActual.setEdad(alumno.getEdad());
-        alumnoActual.setEmail(alumno.getEmail());
-        alumnoActual.setTelefono(alumno.getTelefono());
-        alumnoActual.setSexo(alumno.getSexo());
+    public curso updatecurso(@PathVariable Long id, @RequestBody curso curso){
+        curso cursoActual = repositorio.findById(id).get();
+        cursoActual.setCursonombre(curso.getCursonombre());
+        cursoActual.setProfesor(curso.getProfesor());
+        cursoActual.setSalon(curso.getSalon());
+
         
-        return repositorio.save(alumnoActual);
+        return repositorio.save(cursoActual);
     }
 
 
     @DeleteMapping("/{id}")
-    public String deleteAlumno(@PathVariable Long id){
+    public String deletecurso(@PathVariable Long id){
         try {
             repositorio.findById(id).get();
             repositorio.deleteById(id);
-            return "Alumno eliminado";
+            return "curso eliminado";
         } catch (Exception e) {
-            return "No se pudo eliminar el alumno";
+            return "No se pudo eliminar el curso";
         }
     }
 
